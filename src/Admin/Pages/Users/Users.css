@@ -1,0 +1,25 @@
+.user{
+.Usertable-image {
+    height: 30px !important;
+    width: 30px !important;
+    border-radius: 10px;
+}
+
+}
+
+.add-user-model{
+
+    .modeladd-image-label {
+        border-radius: 3px;
+        width: 120px;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    .addModel-showimage {
+        width: 200px;
+        height: 200px;
+        border-radius: 10px;
+    }
+
+}
