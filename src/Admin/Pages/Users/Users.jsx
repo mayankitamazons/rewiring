@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, } from "react";
 import API_URL from "../../../Environment/ApiRoutes.js/ApiRoutes";
 import {
   GetService,
@@ -34,7 +34,6 @@ const Users = () => {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [updated, setUpdated] = useState(false);
-  const addModelImage = useRef();
   const [userId, setUserId] = useState("");
   const [loading, setLoading] = useState(false);
   const [deleteData, setDeleteData] = useState({
@@ -219,7 +218,6 @@ const Users = () => {
     setError(false);
     setEmailError(false);
     setPasswordError(false);
-    addModelImage.current.value = null;
     setUpdated(false);
   };
 
@@ -610,7 +608,6 @@ const Users = () => {
                   </label>
 
                   <input
-                    ref={addModelImage}
                     type="file"
                     id="profile_pic"
                     className="form-control d-none"

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import API_URL from "../../../Environment/ApiRoutes.js/ApiRoutes";
+import API_URL from "../../../../Environment/ApiRoutes.js/ApiRoutes";
 import {
   GetService,
   PostService,
   patchService,
-} from "../../../Services/CrudServices";
+} from "../../../../Services/CrudServices";
 import { FadeLoader } from "react-spinners";
 import { Link } from "react-router-dom";
-import DeleteModel from "../../Model/DeleteModel";
-import Pagination from "../../../Helpers/Pagination";
-import toaster from "../../../Helpers/Toastify";
+import DeleteModel from "../../../Model/DeleteModel";
+import Pagination from "../../../../Helpers/Pagination";
+import toaster from "../../../../Helpers/Toastify";
 import { ToastContainer } from "react-toastify";
 
 const Community = () => {

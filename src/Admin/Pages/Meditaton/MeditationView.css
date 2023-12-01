@@ -1,0 +1,7 @@
+.meditationview{
+.meditation-backbutton {
+        height: 40px !important;
+        width: 40px !important;
+        border-radius: 50% !important
+}
+}

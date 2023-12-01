@@ -270,8 +270,8 @@ const Content = () => {
                                   <td className="text-center">
                                     {currentPage * limit + index + 1}
                                   </td>
-                                  <td className="text-center">{data.title}</td>
-                                  <td className="text-center">
+                                  <td className="text-center"  >{data.title}</td>
+                                  <td className="text-center" style={{ whiteSpace: 'pre-wrap' }}>
                                     {data.content}
                                   </td>
 

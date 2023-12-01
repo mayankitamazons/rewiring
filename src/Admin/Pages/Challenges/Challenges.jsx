@@ -11,6 +11,7 @@ import { FadeLoader } from "react-spinners";
 import DeleteModel from "../../Model/DeleteModel";
 
 
+
 const Challenges = () => {
   const limit =10 ;
   const [total, setTotal] = useState(0);
@@ -48,8 +49,9 @@ const Challenges = () => {
 
     try {
       setLoading(true)
-      const res = await PostService(`${API_URL.COMMON_DOCUMENT_COUNT + 'CHALLENGE/doc_count' }`);
-      // console.log(res.data.data.count)
+    
+      const res = await PostService(`${API_URL.COMMON_DOCUMENT_COUNT + 'CHALLENGES/doc_count' }`);
+      console.log(res.data.data.count,"jlkjl")
       setTotal(res.data.data.count)
       setLoading(false)
 
@@ -59,12 +61,12 @@ const Challenges = () => {
       console.error("Error occurred:", error);
   }
 
-    try {
+  try {
       setLoading(true);
       const data = { status: "1" };
       const res = await PostService(
         // API_URL.LIST_CHALLENGES
-        `${API_URL.LIST_CHALLENGES}page=${currentPage}&limit=${limit}`
+        `${API_URL.LIST_CHALLENGES}?page=${currentPage}&limit=${limit}`
         , data);
       setDatas(res.data.data[0].ChallegeRecords);
       setLoading(false);
@@ -212,14 +214,14 @@ const Challenges = () => {
                           <tr>
                             <th
                               className="text-center"
-                              style={{ width: "15%" }}
+                              style={{ width: "10%" }}
                             >
                               S.No
                             </th>
-                            <th className="text-center">Title</th>
-                            <th className="text-center">Description</th>
-                            <th className="text-center">Starting Date</th>
-                            <th className="text-center">action</th>
+                            <th className="text-center" style={{ width: "20%" }}>Title</th>
+                            <th className="text-center" style={{ width: "45%" }}>Description</th>
+                            <th className="text-center" style={{ width: "15%" }}>Starting Date</th>
+                            <th className="text-center" style={{ width: "10%" }}>action</th>
                           </tr>
                         </thead>
                         {!loading && (
@@ -232,7 +234,7 @@ const Challenges = () => {
                                   
                                   </td>
                                   <td className="text-center">{data.title}</td>
-                                  <td className="text-center">
+                                  <td className="text-center" style={{ whiteSpace: 'pre-wrap' }}>
                                     {data.description}
                                   </td>
                                   <td className="text-center">
@@ -284,13 +286,7 @@ const Challenges = () => {
                       <div
                         style={{ display: "flex", justifyContent: "center" }}
                       >
-                              <div className="d-flex justify-content-end mr-4 mt-3">
-          <Pagination
-            totalData={total}
-            onChangePage={handlePageClick}
-            activePage={currentPage + 1}
-          ></Pagination>
-        </div>
+                    
                         <FadeLoader speedMultiplier={2} loading={loading} />
                       </div>
                     </div>
@@ -300,6 +296,13 @@ const Challenges = () => {
             </div>
           </div>
         </section>
+        <div className="d-flex justify-content-end mr-4 mt-3">
+          <Pagination
+            totalData={total}
+            onChangePage={handlePageClick}
+            activePage={currentPage + 1}
+          ></Pagination>
+        </div>
         <ToastContainer />
       </div>
 

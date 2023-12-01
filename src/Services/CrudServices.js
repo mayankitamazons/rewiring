@@ -53,6 +53,7 @@ export const GetService = async (urlString, params = {}) => {
 
         if (response.status === 401) {
             localStorage.removeItem("token");
+            localStorage.removeItem("_id");
             // history.push("/login");
             // window.location.reload();
             window.location.pathname = "/login";
@@ -116,6 +117,7 @@ export const PostService = async (urlString, data) => {
 
         if (response.status === 401) {
             localStorage.removeItem("token");
+            localStorage.removeItem("_id");
             // history.push("/login");
             // window.location.reload();
             window.location.pathname = "/login";
@@ -175,6 +177,7 @@ export const postFormData = async (urlString, data) => {
 
         if (response.status === 401) {
             localStorage.removeItem("token");
+            localStorage.removeItem("_id");
             // history.push("/login");
             // window.location.reload();
             window.location.pathname = "/login";
@@ -236,6 +239,7 @@ export const patchService = async (urlString, data) => {
 
         if (response.status === 401) {
             localStorage.removeItem("token");
+            localStorage.removeItem("_id");
             // history.push("/login");
             // window.location.reload();
             window.location.pathname = "/login";
@@ -297,6 +301,7 @@ export const patchFormData = async (urlString, data) => {
         console.log(response)
         if (response.status === 401) {
             localStorage.removeItem("token");
+            localStorage.removeItem("_id");
             // history.push("/login");
             // window.location.reload();
             window.location.pathname = "/login";
@@ -353,6 +358,7 @@ export const deleteService = async (urlString) => {
 
         if (response.status === 401) {
             localStorage.removeItem("token");
+            localStorage.removeItem("_id");
             // history.push("/login");
             // window.location.reload();
             window.location.pathname = "/login";

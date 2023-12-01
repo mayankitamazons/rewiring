@@ -1,0 +1,15 @@
+.profile_setting{
+
+    .profilesetting-image {
+        /* border:1px solid rgb(185, 182, 182); */
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .profilesetting-name {
+        margin-top: 10px;
+    }
+
+ 
+}

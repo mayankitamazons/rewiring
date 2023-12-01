@@ -30,9 +30,9 @@ const [datas, setDatas] = useState([]);
       const res1 = await PostService(
         `${API_URL.COMMON_DOCUMENT_COUNT + "QUESTION/doc_count"}`
       );
-      const res2 = await PostService(
-        `${API_URL.COMMON_DOCUMENT_COUNT + "CHALLENGE/doc_count"}`
-      );
+      // const res2 = await PostService(
+      //   `${API_URL.COMMON_DOCUMENT_COUNT + "CHALLENGE/doc_count"}`
+      // );
       const res3 = await PostService(
         `${API_URL.COMMON_DOCUMENT_COUNT + "USER/doc_count"}`
       );
@@ -40,7 +40,7 @@ const [datas, setDatas] = useState([]);
         `${API_URL.COMMON_DOCUMENT_COUNT + "PROBLEM/doc_count"}`
       );
       setTotalQuestions(res1?.data?.data?.count);
-      setTotalChallenges(res2?.data?.data?.count);
+      // setTotalChallenges(res2?.data?.data?.count);
       setTotalUsers(res3?.data?.data?.count);
       setTotalProblems(res4?.data?.data?.count);
       setLoading(false);
@@ -53,7 +53,7 @@ const [datas, setDatas] = useState([]);
     try {
       setLoading(true);
       const res = await GetService(
-        `${API_URL.ALL_USERS}page=0$&limit=5&userRole=2`
+        `${API_URL.ALL_USERS}?page=0$&limit=5&userRole=2`
       );
       setDatas(res.data.data);
       setLoading(false);

@@ -13,6 +13,9 @@ import toaster from "../../../Helpers/Toastify";
 import { ToastContainer } from "react-toastify";
 import Pagination from "../../../Helpers/Pagination";
 
+
+
+
 const Sound = () => {
   const limit = 10
   const [total, setTotal] = useState(0);
@@ -79,9 +82,11 @@ const Sound = () => {
 
     try {
       setLoading(true);
+      const status=1
       const res = await PostService(
-        `${API_URL.COMMON_DOCUMENT_COUNT + "SOUND/doc_count"}`
+        `${API_URL.COMMON_DOCUMENT_COUNT + "SOUND/doc_count"}`,{status}
       );
+      console.log(res.data.data.count,"ssss");
       setTotal(res.data.data.count);
       setLoading(false);
     } catch (error) {
@@ -97,8 +102,8 @@ const Sound = () => {
     try {
       setLoading(true);
       const res = await PostService(
-        // API_URL.Sound_Listing
-        `${API_URL.Sound_Listing}page=${currentPage}&limit=${limit}`
+    
+        `${API_URL.Sound_Listing}?page=${currentPage}&limit=${limit}`
         , data);
       console.log(res.data.data);
       setDatas(res.data.data);
@@ -375,10 +380,11 @@ const Sound = () => {
                         </button>
                       </div>
                     </div>
-                    <div className="card-body table-responsive">
-                      <table className="table table-hover text-nowrap table-bordered">
-                        <thead>
-                          <tr>
+                    <div className="card-body table-responsive "  >
+                    
+                      <table className="table table-hover text-nowrap table-bordered " >
+                        <thead  >
+                          <tr  >
                             <th
                               className="text-center"
                               style={{ width: "15%" }}
@@ -386,16 +392,17 @@ const Sound = () => {
                               S.No
                             </th>
 
-                            <th className="text-center">Title</th>
-                            <th className="text-center">Audio</th>
-                            <th className="text-center">Artist</th>
-                            <th className="text-center">Album</th>
-                            <th className="text-center">Duration</th>
-                            <th className="text-center">Action</th>
+                            <th className="text-center" >Title</th>
+                            {/* <th className="text-center" >Audio</th> */}
+                            <th className="text-center" >Artist</th>
+                            <th className="text-center" >Album</th>
+                            <th className="text-center" >Duration/sec</th>
+                            <th className="text-center" >Action</th>
                           </tr>
                         </thead>
-                        {!loading && (
-                          <tbody>
+                        {!loading && ( 
+                          <tbody   >
+                         
                             {datas.map((data, index) => {
                               return (
                                 <tr key={index}>
@@ -403,9 +410,9 @@ const Sound = () => {
                                   {currentPage * limit + index + 1}
                                   </td>
                                   <td className="text-center">{data.title}</td>
-                                  <td className="text-center">
+                                  {/* <td className="text-center">
                                     {data.audio_file}
-                                  </td>
+                                  </td> */}
                                   <td className="text-center">{data.artist}</td>
                                   <td className="text-center">{data.album}</td>
                                   <td className="text-center">
@@ -453,6 +460,7 @@ const Sound = () => {
                                 </tr>
                               );
                             })}
+                           
                           </tbody>
                         )}
                       </table>
@@ -562,7 +570,7 @@ const Sound = () => {
 
                 <div className="form-group col-6">
                   <label htmlFor="duration" className="col-form-label">
-                    Duration
+                    Duration/second
                   </label>
                   <input
                     type="number"

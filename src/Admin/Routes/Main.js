@@ -18,14 +18,14 @@ const Main = () => {
 
     return (
         <>
-       
+       <div style={{maxHeight:'100vh',overflow:'auto'}}>
             <Header />
             <SideNav />
-            <div className='content-wrapper'>
-                <Outlet />
+            <div className='content-wrapper'   >
+                <Outlet/>
             </div>
             <Footer />
-           
+            </div>
         </>
     );
 };

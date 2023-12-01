@@ -3,12 +3,11 @@ import { Link, useParams } from "react-router-dom";
 import { GetService, PostService } from '../../../Services/CrudServices';
 import API_URL from '../../../Environment/ApiRoutes.js/ApiRoutes';
 import { FadeLoader } from "react-spinners";
-import AudioPlayer from "react-h5-audio-player";
-import "react-h5-audio-player/lib/styles.css";
-import imageDefault from '../../../Assets/Images/defaultuserimage.png'
-import './Soundview.css'
+import meditationimageDefault from '../../../Assets/Images/defaultMeditationImage.jpg'
 
-const SoundView = () => {
+import './MeditationView.css'
+
+const MeditationView = () => {
 
     const { id } = useParams();
     const [data, setData] = useState({})
@@ -26,7 +25,7 @@ const SoundView = () => {
     const getUserData = async () => {
         try {
             setLoading(true)
-            const res = await GetService(API_URL.GET_SOUND_BY_ID + '/' + id);
+            const res = await GetService(API_URL.GET_MEDITATION_BY_ID + '/' + id);
             setData(res.data.data)
             setLoading(false)
         } catch (error) {
@@ -57,27 +56,27 @@ const SoundView = () => {
     };
 
     const defaultImage = () => {
-        refIcon.current.src = imageDefault
+        refIcon.current.src = meditationimageDefault
     }
 
     const defaultcoverImage = () => {
-        refImage.current.src = imageDefault
+        refImage.current.src = meditationimageDefault
     }
 
     return (
         <>
-            <div className="ng-star-inserted soundview">
+            <div className="ng-star-inserted meditationview">
                 <section className="content-header">
                     <div className="container-fluid">
                         <div className="row mb-2">
                             <div className="col-sm-6">
                                 <h1 className="default_color d-flex align-items-center">
                                     <Link
-                                        to="/sound"
-                                        className="fas fa-arrow-left back-button bg-secondary user-backbutton d-flex align-items-center justify-content-center mr-3"
+                                        to="/meditation"
+                                        className="fas fa-arrow-left back-button bg-secondary meditation-backbutton d-flex align-items-center justify-content-center mr-3"
                                     >
                                     </Link>
-                                    <span>View Sound</span>
+                                    <span>View Meditation</span>
                                 </h1>
                             </div>
 
@@ -90,12 +89,12 @@ const SoundView = () => {
                                     </li>
 
                                     <li className="breadcrumb-item">
-                                        <Link to="/sound" href="/panel/User">
-                                            Sound
+                                        <Link to="/meditation" href="/panel/User">
+                                            Meditation
                                         </Link>
                                     </li>
 
-                                    <li className="breadcrumb-item active">View sound</li>
+                                    <li className="breadcrumb-item active">View meditation</li>
                                 </ol>
                             </div>
                         </div>
@@ -118,16 +117,18 @@ const SoundView = () => {
                                                 </h6>
 
                                                 <h6 className="text-muted "  >
-                                                    Artist : {data?.artist}
+                                                    Description : {data?.description}
                                                 </h6>
 
                                                 <h6 className="text-muted "  >
-                                                    Album : {data?.album}
+                                                    Created date : {data?.created_date?.slice(0,10)}
                                                 </h6>
 
                                                 <h6 className="text-muted "  >
-                                                    Duration/second : {data?.duration}
+                                                    Updated date : {data?.created_date?.slice(0,10)}
                                                 </h6>
+
+                                     
 
                                                 <td className="text-center">
                                                     <span className="text-muted mr-1" >
@@ -143,23 +144,26 @@ const SoundView = () => {
                                                     ) : ''}
                                                 </td>
 
-                                                <div className='mt-3'>
-                                                    <span className="text-muted fs-5">Cover_image : </span>
-                                                    <img style={{ width: 200, height: 200, borderRadius: 10 }} ref={refImage} src={data?.cover_img} onError={defaultcoverImage} alt={data?.cover_img} />
-                                                </div>
-
-                                            </div>
-
-                                            <div className='col-6'>
+                                             
                                                 <div >
                                                     <span className="text-muted fs-5">Icon : </span>
                                                     <img style={{ width: 100, height: 100, borderRadius: 10 }} ref={refIcon}
                                                         src={data?.icon} onError={defaultImage} alt={data?.icon} />
                                                 </div>
 
+                                            </div>
+
+                                            <div className='col-6'>
+
+                                            <div className='mt-3'>
+                                                    <span className="text-muted fs-5">Image : </span>
+                                                    <img style={{ width: 200, height: 200, borderRadius: 10 }} ref={refImage} src={data?.image} onError={defaultcoverImage} alt={data?.image} />
+                                                </div>
 
 
-                                                <p className='mb-2 text-muted mt-4'>AudioPlayer :</p>
+
+
+                                                {/* <p className='mb-2 text-muted mt-4'>AudioPlayer :</p>
                                                 <td className="text-center">
 
                                                     <span>
@@ -169,7 +173,7 @@ const SoundView = () => {
                                                             showSkipControls={true}
                                                             showJumpControls={false}
                                                         /></span>
-                                                </td>
+                                                </td> */}
                                             </div >
                                         </div>
                                     </div>
@@ -194,7 +198,7 @@ const SoundView = () => {
 
 
 
-export default SoundView
+export default MeditationView
 
 
 

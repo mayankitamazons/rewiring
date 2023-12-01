@@ -12,8 +12,8 @@ import { GiJourney } from 'react-icons/gi';
 import { BiRun } from 'react-icons/bi';
 import { BiSolidRightArrow } from 'react-icons/bi';
 import { useNavigate } from "react-router-dom";
-
-
+import { GoReport } from "react-icons/go";
+import { MdReport } from "react-icons/md";
 
 
 const SideNav = () => {
@@ -21,12 +21,13 @@ const SideNav = () => {
 
 
     const logout = () => {
+        localStorage.removeItem("_id");
         localStorage.removeItem("token");
         Navigate('/login')
     }
 
     return (<>
-        <aside className=" main-sidebar sidebar-dark-primary elevation-4" >
+        <aside className=" main-sidebar sidebar-dark-primary elevation-4 sidebar" >
             <div className="brand-link text-center" style={{ maxHeight: "100px", cursor:'pointer' }}>
                 <div className="brandImageCard">
                     <img
@@ -38,7 +39,7 @@ const SideNav = () => {
                 </div>
 
             </div>
-            <div className="sidebar">
+            <div className="">
                 <div className="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div className="image">
                         <img
@@ -147,11 +148,48 @@ const SideNav = () => {
                         </li>
 
                         <li className="nav-item">
-                            <NavLink to={"/community"} className="nav-link">
-                                <PeopleIcon className='nav-icon ' />
-                                <p>Community</p>
-                            </NavLink>
+                            <div 
+                                className="nav-link collapsed Community"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseones"
+                                aria-expanded="false"
+                                aria-controls="collapseone"
+                            >
+
+                                <CategoryIcon className='nav-icon' />
+                                <p>
+                                    Community List<i className="fas fa-angle-left right rotate"></i>
+                                </p>
+                            </div>
+                            <ul
+                                className="nav accordion-collapse collapse"
+                                id="collapseones"
+                                data-bs-parent="#accordionExample"
+                            >
+                                <li className="nav-item" style={{width:'100%'}}>
+                                    <NavLink to={"communityList/community"} className="nav-link cursor">
+                                    <PeopleIcon className='nav-icon ' />
+                                        <p>Community</p>
+                                    </NavLink>
+                                </li>
+
+                                <li className="nav-item" style={{width:'100%'}}>
+                                    <NavLink to={"communityList/report"} className="nav-link cursor" >
+                                        <GoReport className='nav-icon ' style={{color:"white,size:10px"}}/>
+                                        <p>Report</p>
+                                    </NavLink>
+                                </li>
+
+                                <li className="nav-item" style={{width:'100%'}}>
+                                    <NavLink to={"communityList/block"} className="nav-link cursor">
+                                        <MdReport  className='nav-icon ' />
+                                        <p>Block</p>
+                                    </NavLink>
+                                </li>
+                            </ul>
                         </li>
+
+
 
                         <li className="nav-item">
                             <NavLink to={"/content"} className="nav-link">
@@ -221,7 +259,7 @@ const SideNav = () => {
                                 </li>
 
                                 <li className="nav-item" style={{width:'100%'}}>
-                                    <NavLink to={"/setting/changepassword"} className="nav-link">
+                                    <NavLink to={"/setting/changepassword"} className="nav-link cursor">
                                         <i className="fas fa-key nav-icon" />
                                         <p>Change Password</p>
                                     </NavLink>

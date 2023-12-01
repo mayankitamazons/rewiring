@@ -48,6 +48,20 @@ const API_URL = {
   GET_ALL_PAGES: APIBaseURL + "/page?",
   ADD_PAGE: APIBaseURL + "/page",
   UPDATA_PAGE: APIBaseURL + "/page/",
+
+  //FAQ/HELP
+  ADD_HELP: APIBaseURL + "/faq",
+  GET_API_HELP: APIBaseURL + "/faq",
+  UPDATE_HELP: APIBaseURL + "/faq/",
+
+  //MEDITATION
+ADD_MEDITATION: APIBaseURL + '/meditation',
+MEDITATION_FILTER: APIBaseURL + '/problem/problemlist',
+GET_MEDITATION_BY_ID: APIBaseURL + '/problem',
+UPDATE_MEDITATION: APIBaseURL + '/problem',
+
 };
+
+
 
 export default API_URL;

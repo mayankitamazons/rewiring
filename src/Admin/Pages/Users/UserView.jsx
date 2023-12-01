@@ -86,34 +86,34 @@ const UserView = () => {
                                   
 
                                             <h6 className="text-muted userview-username"  >
-                                                Full Name : {data?.full_name}
+                                                Full Name : <span style={{marginLeft:'50px'}}> {data?.full_name} </span>
                                             </h6>
 
                                             <h6 className="text-muted userview-username"  >
-                                                Nick Name : {data?.nickname}
+                                                Nick Name : <span style={{marginLeft:'45px'}}>  {data?.nickname} </span>
                                             </h6>
 
                                             <h6 className="text-muted">
-                                                dob : {data?.dob?.slice(0, 10)}
+                                                dob : <span style={{marginLeft:'91px'}}>  {data?.dob?.slice(0, 10)} </span>
                                             </h6>
 
 
                                             <h6 className="text-muted">
-                                                Email : {data?.email}
+                                                Email : <span style={{marginLeft:'80px'}}> {data?.email} </span>
                                             </h6>
 
                                             <h6 className="text-muted">
-                                                created At : {
+                                                created At : <span style={{marginLeft:'52px'}}> {
                                                     data?.registration_time?.slice(0, 10)
-                                                }
+                                                } </span>
                                             </h6>
 
                                             <h6 className="text-muted userview-username"  >
-                                                Profile Pic :
+                                               <span style={{float:"left"}}> Profile Pic : </span> <span className='userview-userimage' style={{marginLeft:'52px'}} >
+                                                <img className='userview-userimage' ref={refImage} src={data?.profile_pic} onError={defaultImage} alt={data?.profile_pic} /> 
+                                            </span>
                                             </h6>
-                                            <div className='userview-userimage'>
-                                                <img className='userview-userimage' ref={refImage} src={data?.profile_pic} onError={defaultImage} alt={data?.profile_pic} />
-                                            </div>
+                                           
                                         </div>
                                     </div>
                                 </div>}

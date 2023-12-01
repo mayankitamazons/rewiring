@@ -65,6 +65,7 @@ export default function Login() {
                         console.log(res.data.msg)
                         toaster("successfully login",'success')
                         localStorage.setItem("token", res.data.data.access_token);
+                        localStorage.setItem("_id", res.data.data._id);
                         navigate("/dashboard");
                         window.location.reload();
                     }

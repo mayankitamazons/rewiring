@@ -2,7 +2,8 @@ import React from 'react'
 
 const Subcategory = () => {
     return (
-        <div>Subcategory</div>
+        <div>depression - silent, deep ---
+        stress - silent,cool </div>
     )
 }
 

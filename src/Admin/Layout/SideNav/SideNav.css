@@ -65,6 +65,13 @@
     padding: 4px;
 }
 
-
+ .sidebar {
+    position: fixed !important;
+    top: 0;
+    max-height: 100vh; 
+    /* overflow: auto; */
+     bottom: 0;
+     float: none
+  } 
 
 

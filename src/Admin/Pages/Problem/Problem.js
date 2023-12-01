@@ -4,11 +4,14 @@ import { PostService } from "../../../Services/CrudServices";
 import { FadeLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 import DeleteModel from "../../Model/DeleteModel";
+import Pagination from "../../../Helpers/Pagination";
 
 
 const Problem = () => {
 
-
+  const limit = 10
+  const [total, setTotal] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
   const [datas, setDatas] = useState([]);
   const [loading, setLoading] = useState(false);
   const [problemData, setProblemData] = useState({
@@ -35,6 +38,21 @@ const Problem = () => {
   //get api call
 
   const getalldata = async () => {
+
+    try {
+      setLoading(true);
+      const res = await PostService(
+        `${API_URL.COMMON_DOCUMENT_COUNT + "PROBLEM/doc_count"}`
+      );
+      console.log(res.data.data.count,"ssss");
+      setTotal(res.data.data.count);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.error("Error occurred:", error);
+    }
+
+
     const data = {
       status: 1,
     };
@@ -70,6 +88,9 @@ const Problem = () => {
     }
   };
 
+  const handlePageClick = (value) => {
+    setCurrentPage(value - 1);
+  };
 
 
   return (
@@ -139,7 +160,7 @@ const Problem = () => {
                             {datas.map((data, index) => {
                               return (
                                 <tr key={index}>
-                                  <td className="text-center">{index + 1}</td>
+                                  <td className="text-center">{currentPage * limit + index + 1}</td>
                                   <td className="text-center">{data.title}</td>
                                   <td className="text-center">
                                     {data.description}
@@ -205,6 +226,13 @@ const Problem = () => {
             </div>
           </div>
         </section>
+        <div className="d-flex justify-content-end mr-4 mt-3">
+          <Pagination
+            totalData={total}
+            onChangePage={handlePageClick}
+            activePage={currentPage + 1}
+          ></Pagination>
+        </div>
       </div>
 
       {/* add model */}
